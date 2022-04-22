@@ -11,9 +11,60 @@ datasource db {
 }
 
 model User {
-  id       String @id @default(uuid())
-  username String @unique
-  password String
+  id         String   @id @default(uuid())
+  username   String   @unique
+  password   String
+  created_at DateTime @default(now())
 
+  Test Test[]
   @@map("user")
+}
+
+model Schools {
+  id         String   @id @default(uuid())
+  school     String   @unique
+  created_at DateTime @default(now())
+
+  Rooms Rooms[]
+  @@map("schools")
+}
+
+model Rooms {
+  id         String   @id @default(uuid())
+  room       String
+  school_id  String
+  school     Schools  @relation(fields: [school_id], references: [id])
+  created_at DateTime @default(now())
+
+  @@map("rooms")
+}
+
+model Test {
+  id           String   @id @default(uuid())
+  id_client    String
+  user         User     @relation(fields: [id_client], references: [id])
+  student_name String
+  id_school    String
+  id_room      String
+  answer_01    String?
+  answer_02    String?
+  answer_03    String?
+  answer_04    String?
+  answer_05    String?
+  answer_06    String?
+  answer_07    String?
+  answer_08    String?
+  answer_09    String?
+  answer_10    String?
+  answer_11    String?
+  answer_12    String?
+  answer_13    String?
+  answer_14    String?
+  answer_15    String?
+  answer_16    String?
+  answer_17    String?
+  created_at   DateTime @default(now())
+
+
+  @@map("test")
 }
