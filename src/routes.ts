@@ -3,6 +3,7 @@ import { Router } from "express";
 import { ensureAuthenticateClient } from "./middlewares/ensureAuthenticateClient";
 import { AuthenticateClientController } from "./modules/account/authenticateClient/AuthenticateClientController";
 import { CreateClientController } from "./modules/clients/useCases/createClient/CreateClientController";
+import { ListClientController } from "./modules/clients/useCases/listClient/ListClientController";
 import { CreateRoomController } from "./modules/rooms/useCases/createRoom/CreateRoomController";
 import { CreateSchoolController } from "./modules/schools/useCases/createSchool/CreateSchoolController";
 import { CreateTestController } from "./modules/test/useCases/createTest/CreateTestController";
@@ -22,8 +23,10 @@ const listSchoolTestController = new ListSchoolTestController();
 const createSchoolController = new CreateSchoolController();
 const createRoomController = new CreateRoomController();
 const listRoomTestController = new ListRoomTestController();
+const listClientController = new ListClientController();
 
-routes.post("/client/", createClientController.handle);
+routes.post("/client", createClientController.handle);
+routes.get("/client", listClientController.handle);
 routes.post("/autheticate", authenticateClientController.handle);
 routes.post("/test", ensureAuthenticateClient, createTestController.handle);
 routes.get(

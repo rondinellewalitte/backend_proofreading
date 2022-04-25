@@ -1,10 +1,18 @@
 import "dotenv/config";
+import cors from "cors";
 import express, { NextFunction, Request, Response } from "express";
 
 import "express-async-errors";
 import { routes } from "./routes";
 
 const app = express();
+
+const options: cors.CorsOptions = {
+  exposedHeaders: "x-total-count",
+  origin: "*",
+};
+
+app.use(cors(options));
 
 app.use(express.json());
 
@@ -24,4 +32,4 @@ app.use(
   }
 );
 
-app.listen(3000, () => console.log("Server is running"));
+app.listen(3333, () => console.log("Server is running"));
