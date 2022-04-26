@@ -39,12 +39,12 @@ export class AuthenticateClientUseCase {
 
     const token = sign({ email }, process.env.TOKEN_BCRIPT, {
       subject: client.id,
-      expiresIn: "15m",
+      expiresIn: process.env.EXPIRES_IN_TOKEN,
     });
 
     const refresh_token = sign({ email }, process.env.SECRET_REFRESH_TOKEN, {
       subject: client.id,
-      expiresIn: "30d",
+      expiresIn: process.env.EXPIRES_IN_REFRESH_TOKEN,
     });
 
     const expires_in = dayjs().add(30, "days").toDate();
@@ -56,8 +56,6 @@ export class AuthenticateClientUseCase {
         expires_in,
       },
     });
-
-    console.log(refreshToken);
 
     const tokenReturn: IResponse = {
       token,

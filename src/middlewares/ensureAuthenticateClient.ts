@@ -18,15 +18,14 @@ export async function ensureAuthenticateClient(
   const [, token] = authHeader.split(" ");
 
   try {
-    const { sub } = verify(
-      token,
-      "319089c7e1d38f8836c17a4e27658ae6"
-    ) as IPayload;
+    const { sub } = verify(token, process.env.TOKEN_BCRIPT) as IPayload;
 
     request.id_client = sub;
 
     return next();
   } catch (err) {
-    return response.status(401).json({ message: "Invalid token!" });
+    return response
+      .status(401)
+      .json({ error: true, code: "token.expired", message: "Invalid token!" });
   }
 }
