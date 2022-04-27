@@ -22,6 +22,7 @@ app.use(
   (err: Error, request: Request, response: Response, next: NextFunction) => {
     if (err instanceof Error) {
       return response.status(400).json({
+        status: "error",
         message: err.message,
       });
     }

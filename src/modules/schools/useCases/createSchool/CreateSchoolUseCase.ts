@@ -6,9 +6,10 @@ interface ISchoolClient {
 
 export class CreateSchoolUseCase {
   async execute({ school }: ISchoolClient) {
+    const schoolUperCase = school.toUpperCase();
     const schoolExists = await prisma.schools.findFirst({
       where: {
-        school,
+        school: schoolUperCase,
       },
     });
 
@@ -16,12 +17,14 @@ export class CreateSchoolUseCase {
       throw new Error("Schools already exists");
     }
 
-    const result = await prisma.schools.create({
+    await prisma.schools.create({
       data: {
-        school,
+        school: schoolUperCase,
       },
     });
 
-    return result;
+    const response = { status: "success", message: "School create Sucess!" };
+
+    return response;
   }
 }

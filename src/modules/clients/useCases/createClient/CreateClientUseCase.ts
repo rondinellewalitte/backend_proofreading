@@ -27,7 +27,7 @@ export class CreateClientUseCase {
 
     const hashPassword = await hash(password, 10);
 
-    const client = await prisma.user.create({
+    await prisma.user.create({
       data: {
         email,
         username,
@@ -35,6 +35,8 @@ export class CreateClientUseCase {
       },
     });
 
-    return client;
+    const response = { status: "success", message: "User Create Sucess!" };
+
+    return response;
   }
 }
