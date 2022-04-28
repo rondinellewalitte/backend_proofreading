@@ -7,23 +7,41 @@ interface IRoomClient {
 
 export class CreateRoomUseCase {
   async execute({ school_id, room }: IRoomClient) {
+    if (!school_id) {
+      throw new Error("School doesn't exist");
+    }
+
+    const roomUperCase = room.toUpperCase();
+
     const schoolExists = await prisma.schools.findFirst({
       where: {
         id: school_id,
       },
     });
 
+    const roomExists = await prisma.rooms.findFirst({
+      where: {
+        room: roomUperCase,
+      },
+    });
+
     if (!schoolExists) {
-      throw new Error("School doesn't exist");
+      throw new Error("School doesn't exist!");
     }
 
-    const result = await prisma.rooms.create({
+    if (roomExists) {
+      throw new Error("Room already exists!");
+    }
+
+    await prisma.rooms.create({
       data: {
-        room,
+        room: roomUperCase,
         school_id,
       },
     });
 
-    return result;
+    const response = { status: "success", message: "Room create Sucess!" };
+
+    return response;
   }
 }

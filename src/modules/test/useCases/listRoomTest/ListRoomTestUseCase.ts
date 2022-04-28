@@ -6,6 +6,16 @@ interface IRoomTest {
 
 export class ListRoomTestUseCase {
   async execute({ school_id }: IRoomTest) {
+    const schoolExists = await prisma.schools.findFirst({
+      where: {
+        id: school_id,
+      },
+    });
+
+    if (!schoolExists) {
+      throw new Error("School doesn't exist!");
+    }
+
     const test = await prisma.rooms.findMany({
       where: {
         school_id,
