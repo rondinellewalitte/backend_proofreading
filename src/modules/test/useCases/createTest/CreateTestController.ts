@@ -4,7 +4,7 @@ import { CreateTestUseCase } from "./CreateTestUseCase";
 
 export class CreateTestController {
   async handle(request: Request, response: Response) {
-    const { student_name, id_school, id_room } = request.body;
+    const { student_name, id_school, id_room, type_test } = request.body;
     const { id_client } = request;
 
     const createTestUseCase = new CreateTestUseCase();
@@ -14,6 +14,7 @@ export class CreateTestController {
       student_name,
       id_school,
       id_room,
+      type_test,
     });
     return response.json(test);
   }

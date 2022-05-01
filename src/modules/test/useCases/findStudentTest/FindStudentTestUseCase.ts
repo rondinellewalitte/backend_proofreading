@@ -1,25 +1,26 @@
 import { prisma } from "../../../../database/prismaClient";
 
 interface IFindStudentTest {
-  school: string;
-  room: string;
+  school_id: string;
+  room_id: string;
 }
 
 export class FindStudentTestUseCase {
-  async execute({ school, room }: IFindStudentTest) {
+  async execute({ school_id, room_id }: IFindStudentTest) {
     const test = await prisma.test.findMany({
       where: {
-        school,
-        room,
+        id_school: school_id,
+        id_room: room_id,
       },
       select: {
         id: true,
         student_name: true,
+        type_test: true,
       },
     });
 
     if (test.length === 0) {
-      throw new Error("No results found!");
+      return [{ id: "0", room: "Sem Alunos cadastradas!" }];
     }
     return test;
   }

@@ -4,13 +4,13 @@ import { FindStudentTestUseCase } from "./FindStudentTestUseCase";
 
 export class FindStudentTestController {
   async handle(request: Request, response: Response) {
-    const { school, room } = request.body;
+    const { school_id, room_id } = request.body;
 
     const findStudentTestUseCase = new FindStudentTestUseCase();
 
     const test = await findStudentTestUseCase.execute({
-      school,
-      room,
+      school_id,
+      room_id,
     });
     return response.json(test);
   }

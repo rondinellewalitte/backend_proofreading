@@ -59,6 +59,7 @@ model Test {
   student_name String
   id_school    String
   id_room      String
+  type_test    String
   answer_01    String?
   answer_02    String?
   answer_03    String?

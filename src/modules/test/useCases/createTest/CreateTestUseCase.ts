@@ -5,10 +5,17 @@ interface ICreateTest {
   student_name: string;
   id_school: string;
   id_room: string;
+  type_test: string;
 }
 
 export class CreateTestUseCase {
-  async execute({ id_client, student_name, id_school, id_room }: ICreateTest) {
+  async execute({
+    id_client,
+    student_name,
+    id_school,
+    id_room,
+    type_test,
+  }: ICreateTest) {
     const clientExists = await prisma.user.findFirst({
       where: {
         id: id_client,
@@ -25,7 +32,7 @@ export class CreateTestUseCase {
       },
     });
 
-    if (schoolExists) {
+    if (!schoolExists) {
       throw new Error("School doesn't exist!");
     }
 
@@ -47,6 +54,7 @@ export class CreateTestUseCase {
         student_name: studentUperCase,
         id_school,
         id_room,
+        type_test,
       },
     });
 
