@@ -19,20 +19,22 @@ export class CreateRoomUseCase {
       },
     });
 
+    /*
     const roomExists = await prisma.rooms.findFirst({
       where: {
         room: roomUperCase,
       },
-    });
+      });
+      */
 
     if (!schoolExists) {
       throw new Error("School doesn't exist!");
     }
-
+    /*
     if (roomExists) {
       throw new Error("Room already exists!");
     }
-
+    */
     await prisma.rooms.create({
       data: {
         room: roomUperCase,

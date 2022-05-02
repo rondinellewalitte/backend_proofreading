@@ -1,7 +1,7 @@
 import { prisma } from "../../../../database/prismaClient";
 
 interface IListClient {
-  page: string;
+  page: any;
 }
 
 export class ListClientUseCase {

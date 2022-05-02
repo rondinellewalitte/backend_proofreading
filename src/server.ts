@@ -16,7 +16,7 @@ app.use(cors(options));
 
 app.use(express.json());
 
-app.use(routes);
+app.use("/tatauigo",routes);
 
 app.use(
   (err: Error, request: Request, response: Response, next: NextFunction) => {
@@ -33,4 +33,4 @@ app.use(
   }
 );
 
-app.listen(3333, () => console.log("Server is running"));
+app.listen(9999, () => console.log("Server is running"));
