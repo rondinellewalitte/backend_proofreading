@@ -23,6 +23,18 @@ export class UpdateStudentTestController {
       answer_15,
       answer_16,
       answer_17,
+      answer_18,
+      answer_19,
+      answer_20,
+      answer_21,
+      answer_22,
+      answer_23,
+      answer_24,
+      answer_25,
+      answer_26,
+      answer_27,
+      answer_28,
+      answer_29,
     } = request.body;
     const { id_client } = request;
 
@@ -48,6 +60,18 @@ export class UpdateStudentTestController {
       answer_15,
       answer_16,
       answer_17,
+      answer_18,
+      answer_19,
+      answer_20,
+      answer_21,
+      answer_22,
+      answer_23,
+      answer_24,
+      answer_25,
+      answer_26,
+      answer_27,
+      answer_28,
+      answer_29,
     });
     return response.json(test);
   }

@@ -53,9 +53,9 @@ model Rooms {
 }
 
 model Test {
-  id           String   @id @default(uuid())
+  id           String  @id @default(uuid())
   id_client    String
-  user         User     @relation(fields: [id_client], references: [id])
+  user         User    @relation(fields: [id_client], references: [id])
   student_name String
   id_school    String
   id_room      String
@@ -77,7 +77,20 @@ model Test {
   answer_15    String?
   answer_16    String?
   answer_17    String?
-  created_at   DateTime @default(now())
+  answer_18    String?
+  answer_19    String?
+  answer_20    String?
+  answer_21    String?
+  answer_22    String?
+  answer_23    String?
+  answer_24    String?
+  answer_25    String?
+  answer_26    String?
+  answer_27    String?
+  answer_28    String?
+  answer_29    String?
+
+  created_at DateTime @default(now())
 
 
   @@map("test")

@@ -20,6 +20,18 @@ interface IUpdateStudentTest {
   answer_15?: string;
   answer_16?: string;
   answer_17?: string;
+  answer_18?: string;
+  answer_19?: string;
+  answer_20?: string;
+  answer_21?: string;
+  answer_22?: string;
+  answer_23?: string;
+  answer_24?: string;
+  answer_25?: string;
+  answer_26?: string;
+  answer_27?: string;
+  answer_28?: string;
+  answer_29?: string;
 }
 
 export class UpdateStudentTestUseCase {
@@ -43,6 +55,18 @@ export class UpdateStudentTestUseCase {
     answer_15,
     answer_16,
     answer_17,
+    answer_18,
+    answer_19,
+    answer_20,
+    answer_21,
+    answer_22,
+    answer_23,
+    answer_24,
+    answer_25,
+    answer_26,
+    answer_27,
+    answer_28,
+    answer_29,
   }: IUpdateStudentTest) {
     const result = await prisma.test.update({
       where: {
@@ -67,6 +91,18 @@ export class UpdateStudentTestUseCase {
         answer_15,
         answer_16,
         answer_17,
+        answer_18,
+        answer_19,
+        answer_20,
+        answer_21,
+        answer_22,
+        answer_23,
+        answer_24,
+        answer_25,
+        answer_26,
+        answer_27,
+        answer_28,
+        answer_29,
       },
     });
     return result;

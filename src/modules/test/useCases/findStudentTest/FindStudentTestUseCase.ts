@@ -6,11 +6,7 @@ interface IFindStudentTest {
 }
 
 export class FindStudentTestUseCase {
-async execute({ school, room }: IFindStudentTest) {
-
-
-console.log(school);
-console.log(room);
+  async execute({ school, room }: IFindStudentTest) {
     const test = await prisma.test.findMany({
       where: {
         id_school: school,

@@ -16,7 +16,8 @@ app.use(cors(options));
 
 app.use(express.json());
 
-app.use("/tatauigo",routes);
+// app.use("/tatauigo", routes);
+app.use("/", routes);
 
 app.use(
   (err: Error, request: Request, response: Response, next: NextFunction) => {
