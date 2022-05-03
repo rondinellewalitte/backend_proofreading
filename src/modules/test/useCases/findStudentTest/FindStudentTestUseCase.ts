@@ -1,16 +1,20 @@
 import { prisma } from "../../../../database/prismaClient";
 
 interface IFindStudentTest {
-  school_id: string;
-  room_id: string;
+  school: string;
+  room: string;
 }
 
 export class FindStudentTestUseCase {
-  async execute({ school_id, room_id }: IFindStudentTest) {
+async execute({ school, room }: IFindStudentTest) {
+
+
+console.log(school);
+console.log(room);
     const test = await prisma.test.findMany({
       where: {
-        id_school: school_id,
-        id_room: room_id,
+        id_school: school,
+        id_room: room,
       },
       select: {
         id: true,
